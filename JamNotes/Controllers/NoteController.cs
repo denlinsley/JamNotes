@@ -51,7 +51,7 @@ namespace JamNotes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NoteID,UserID,BandID,SongID,Date,Description,Link")] Note note)
+        public ActionResult Create([Bind(Include = "NoteID,UserID,BandID,SongID,ShowDate,Description,Link")] Note note)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace JamNotes.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NoteID,UserID,BandID,SongID,Date,Description,Link")] Note note)
+        public ActionResult Edit([Bind(Include = "NoteID,UserID,BandID,SongID,ShowDate,Description,Link")] Note note)
         {
             if (ModelState.IsValid)
             {
