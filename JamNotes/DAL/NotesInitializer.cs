@@ -6,8 +6,8 @@ using System.Data.Entity;
 
 namespace JamNotes.DAL
 {
-    //public class NotesInitializer : DropCreateDatabaseIfModelChanges<NotesContext>
-    public class NotesInitializer : DropCreateDatabaseAlways<NotesContext>
+    public class NotesInitializer : DropCreateDatabaseIfModelChanges<NotesContext>
+    //public class NotesInitializer : DropCreateDatabaseAlways<NotesContext>
     {
         protected override void Seed(NotesContext context)
         {
