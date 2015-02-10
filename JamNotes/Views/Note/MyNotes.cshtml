@@ -1,0 +1,41 @@
+﻿@model JamNotes.Models.Note
+@{
+    ViewBag.Title = "My Notes";
+}
+
+<h2>Notes by @Model.User.UserName </h2>
+@*<p>
+    Description: @Model.Description;
+</p>*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Band.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Song.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Band.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Song.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.ShowDate)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Description)
+        </td>
+    </tr>
+</table>
+
