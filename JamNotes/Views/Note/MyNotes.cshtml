@@ -1,41 +1,81 @@
-﻿@model JamNotes.Models.Note
+﻿@model JamNotes.Models.SingleUserViewModel
+
 @{
     ViewBag.Title = "My Notes";
 }
 
-<h2>Notes by @Model.User.UserName </h2>
-@*<p>
-    Description: @Model.Description;
-</p>*@
+<h2>Notes by @Model.UserName </h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Band.Name)
+            @Html.DisplayName("Song")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Song.Title)
+            @Html.DisplayName("Title")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShowDate)
+            @Html.DisplayName("Show Date")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayName("Description")
         </th>
     </tr>
-    <tr>
-        <td>
-            @Html.DisplayFor(model => model.Band.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(model => model.Song.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(model => model.ShowDate)
-        </td>
-        <td>
-            @Html.DisplayFor(model => model.Description)
-        </td>
-    </tr>
+    @foreach (var item in Model.Notes)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Band.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Song.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+    }
 </table>
+
+@* Old version using the Note domain class only (one note at a time, not a list) *@
+@*@model JamNotes.Models.Note
+    @{
+        ViewBag.Title = "My Notes";
+    }
+
+    <h2>Notes by @Model.User.UserName </h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Band.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Song.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Band.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Song.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ShowDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Description)
+            </td>
+        </tr>
+    </table>*@
 
