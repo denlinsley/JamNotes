@@ -61,7 +61,7 @@ namespace JamNotes.Controllers
                             select s).FirstOrDefault<Song>();
 
                 var user = (from u in db.Users
-                            where u.UserID == 1 // later, UserId will be passed in as a parameter
+                            where u.UserID == 1 // eventually, UserId will be passed in as a parameter
                             select u).FirstOrDefault<User>();
 
                 Note note = new Note();
