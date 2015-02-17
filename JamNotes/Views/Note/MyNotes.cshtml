@@ -6,13 +6,17 @@
 
 <h2>Notes by @Model.UserName </h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")  @*params: link text, method*@
+</p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Song")
+            @Html.DisplayName("Band")
         </th>
         <th>
-            @Html.DisplayName("Title")
+            @Html.DisplayName("Song")
         </th>
         <th>
             @Html.DisplayName("Show Date")
