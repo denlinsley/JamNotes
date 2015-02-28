@@ -24,6 +24,9 @@
         <th>
             @Html.DisplayName("Description")
         </th>
+        <th>
+            @Html.DisplayName("Link")
+        </th>
     </tr>
     @foreach (var item in Model.Notes)
     {
@@ -39,6 +42,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
             </td>
         </tr>
     }
