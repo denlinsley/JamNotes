@@ -20,8 +20,11 @@
                 </a>
             </th>
             <th>
-                @Html.ActionLink("Song", "AllNotes", new { sortOrder = ViewBag.SongSortParm })
-                <i class="glyphicon glyphicon-sort"></i>
+                @Html.DisplayNameFor(model => model.Song)
+                <a href="@Url.Action("AllNotes", new { sortOrder = ViewBag.SongSortParm })">
+                    <i class="glyphicon glyphicon-sort"></i>
+                    <span class="sr-only">Sort</span>
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ShowDate)
@@ -30,7 +33,7 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Link)
+                @*@Html.DisplayNameFor(model => model.Link)*@
             </th>
         </tr>
     </thead>
@@ -54,7 +57,7 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Link)
+                    <a href="@item.Link" target="_blank">Listen</a>
                 </td>
             </tr>
         }
