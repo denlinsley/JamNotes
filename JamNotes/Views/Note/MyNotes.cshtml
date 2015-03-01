@@ -10,44 +10,48 @@
     @Html.ActionLink("Create New", "Create")  @*params: link text, method*@
 </p>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Band")
-        </th>
-        <th>
-            @Html.DisplayName("Song")
-        </th>
-        <th>
-            @Html.DisplayName("Show Date")
-        </th>
-        <th>
-            @Html.DisplayName("Description")
-        </th>
-        <th>
-            @Html.DisplayName("Link")
-        </th>
-    </tr>
-    @foreach (var item in Model.Notes)
-    {
+<table class="table table-bordered table-striped">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Band.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Song.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShowDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Link)
-            </td>
+            <th>
+                @Html.DisplayName("Band")
+            </th>
+            <th>
+                @Html.DisplayName("Song")
+            </th>
+            <th>
+                @Html.DisplayName("Show Date")
+            </th>
+            <th>
+                @Html.DisplayName("Description")
+            </th>
+            <th>
+                @*@Html.DisplayName("Link")*@
+            </th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Notes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Band.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Song.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShowDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a href="@item.Link" target="_blank">Listen</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 
 @* Old version using the Note domain class only (one note at a time, not a list) *@
