@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Linq;
 using JamNotes.Models;
+using System;
 
 namespace JamNotes.Controllers
 {
@@ -29,12 +30,41 @@ namespace JamNotes.Controllers
             return View(model);
         }
 
+        //// GET: Note/AllNotes
+        //public ActionResult AllNotes()
+        //{
+        //    ViewBag.Heading = "Viewing notes by all users";
+        //    return View(db.Notes.ToList()); // same as auto-generated Contoso CRUD contoller Index method
+        //}
+
 
         // GET: Note/AllNotes
-        public ActionResult AllNotes()
+        public ActionResult AllNotes(string sortOrder)
         {
             ViewBag.Heading = "Viewing notes by all users";
-            return View(db.Notes.ToList()); // same as auto-generated Contoso CRUD contoller Index method
+            ViewBag.BandSortParm = String.IsNullOrEmpty(sortOrder) ? "band_desc" : "";
+            ViewBag.SongSortParm = sortOrder == "Song" ? "song_desc" : "Song";
+
+
+            var notes = from n in db.Notes
+                        select n;
+
+            switch (sortOrder)
+            {
+                case "band_desc":
+                    notes = notes.OrderByDescending(n => n.Band.Name);
+                    break;
+                case "Song":
+                    notes = notes.OrderBy(n => n.Song.Title);
+                    break;
+                case "song_desc":
+                    notes = notes.OrderByDescending(n => n.Song.Title);
+                    break;
+                default:
+                    notes = notes.OrderBy(n => n.Band.Name);
+                    break;
+            }
+            return View(notes.ToList());
         }
 
 
