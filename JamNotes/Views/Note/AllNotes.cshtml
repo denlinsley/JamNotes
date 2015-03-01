@@ -6,49 +6,57 @@
 
 <h2>@ViewBag.Heading</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.User.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Band)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Song)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShowDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Link)
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model)
-    {
+<table class="table table-bordered table-striped">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Band.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Song.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShowDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Link)
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Band)
+                <a href="@Url.Action("AllNotes", new { sortOrder = ViewBag.BandSortParm })">
+                    <i class="glyphicon glyphicon-sort"></i>
+                    <span class="sr-only">Sort</span>
+                </a>
+            </th>
+            <th>
+                @Html.ActionLink("Song", "AllNotes", new { sortOrder = ViewBag.SongSortParm })
+                <i class="glyphicon glyphicon-sort"></i>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link)
+            </th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Band.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Song.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShowDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Link)
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
